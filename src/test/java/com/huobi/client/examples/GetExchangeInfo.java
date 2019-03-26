@@ -1,7 +1,6 @@
 package com.huobi.client.examples;
 
 import com.huobi.client.AsyncRequestClient;
-import com.huobi.client.RequestOptions;
 import com.huobi.client.SyncRequestClient;
 import com.huobi.client.model.ExchangeInfo;
 import com.huobi.client.model.Symbol;

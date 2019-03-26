@@ -14,7 +14,7 @@ import org.mockito.ArgumentCaptor;
 
 public class TestWebsocketConnection {
 
-	private MockWebsocketConnection mockWebsocketConnection;
+//	private MockWebsocketConnection mockWebsocketConnection;
 
 	private String errorSub = "{\n" + "  \"id\": \"id2\",\n" + "  \"status\": \"error\",\n"
 			+ "  \"err-code\": \"bad-request\",\n"

@@ -1,7 +1,6 @@
 package com.huobi.client.examples;
 
 import com.huobi.client.SubscriptionClient;
-import com.huobi.client.SubscriptionOptions;
 import com.huobi.client.model.enums.CandlestickInterval;
 
 public class SubscribeCandlestickEvent {

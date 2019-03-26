@@ -5,22 +5,23 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import com.huobi.client.RequestOptions;
 import com.huobi.client.exception.HuobiApiException;
 import com.huobi.client.impl.utils.JsonWrapper;
 import com.huobi.client.impl.utils.TimeService;
 import com.huobi.client.model.MatchResult;
-import com.huobi.client.model.enums.AccountType;
 import com.huobi.client.model.enums.OrderType;
 import com.huobi.client.model.request.MatchResultRequest;
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 public class TestGetMatchResults {
 

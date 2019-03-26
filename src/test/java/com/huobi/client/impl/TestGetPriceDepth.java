@@ -7,7 +7,6 @@ import com.huobi.client.exception.HuobiApiException;
 import com.huobi.client.impl.utils.JsonWrapper;
 import com.huobi.client.impl.utils.TimeService;
 import com.huobi.client.model.PriceDepth;
-import com.huobi.client.model.User;
 import java.math.BigDecimal;
 import okhttp3.Request;
 import org.junit.Before;
@@ -18,7 +17,7 @@ import org.junit.rules.ExpectedException;
 public class TestGetPriceDepth {
 
 	private RestApiRequestImpl impl = null;
-	private User user = new User();
+//	private User user = new User();
 
 	private static final String data = "{\n" + "  \"status\": \"ok\",\n" + "  \"ch\": \"market.ethusdt.depth.step0\",\n"
 			+ "  \"ts\": 1550218546616,\n" + "  \"tick\": {\n" + "    \"bids\": [\n" + "      [\n"

@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class TestEtfSwap {
-	private String data = "{\n" + "    \"code\": 200,\n" + "    \"data\": null,\n" + "    \"message\": null,\n"
-			+ "    \"success\": true\n" + "}";
+//	private String data = "{\n" + "    \"code\": 200,\n" + "    \"data\": null,\n" + "    \"message\": null,\n"
+//			+ "    \"success\": true\n" + "}";
 
 	private RestApiRequestImpl impl = new RestApiRequestImpl("123", "456", new RequestOptions());
 

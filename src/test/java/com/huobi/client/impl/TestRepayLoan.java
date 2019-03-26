@@ -16,7 +16,7 @@ import org.junit.rules.ExpectedException;
 public class TestRepayLoan {
 
 	private RestApiRequestImpl impl = null;
-	private String data = "{\n" + "  \"status\": \"ok\",\n" + "  \"data\": 1000\n" + "}";
+//	private String data = "{\n" + "  \"status\": \"ok\",\n" + "  \"data\": 1000\n" + "}";
 
 	private String dataError = "{\n" + "  \"status\": \"ok\"\n" + "}";
 

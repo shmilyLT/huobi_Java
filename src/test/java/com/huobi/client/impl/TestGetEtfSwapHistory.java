@@ -3,18 +3,18 @@ package com.huobi.client.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import com.huobi.client.RequestOptions;
-import com.huobi.client.exception.HuobiApiException;
-import com.huobi.client.impl.utils.JsonWrapper;
-import com.huobi.client.model.EtfSwapConfig;
-import com.huobi.client.model.EtfSwapHistory;
-import com.huobi.client.model.enums.EtfStatus;
-import com.huobi.client.model.enums.EtfSwapType;
 import java.math.BigDecimal;
 import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import com.huobi.client.RequestOptions;
+import com.huobi.client.exception.HuobiApiException;
+import com.huobi.client.impl.utils.JsonWrapper;
+import com.huobi.client.model.EtfSwapHistory;
+import com.huobi.client.model.enums.EtfSwapType;
 
 public class TestGetEtfSwapHistory {
 	private String data = "{\n" + "  \"code\": 200,\n" + "  \"data\": [\n" + "    {\n" + "      \"id\": 112222,\n"
