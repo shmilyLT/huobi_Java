@@ -14,67 +14,58 @@ import javax.crypto.spec.SecretKeySpec;
 
 class ApiSignature {
 
-  static final String op = "op";
-  static final String opValue = "auth";
-  private static final String accessKeyId = "AccessKeyId";
-  private static final String signatureMethod = "SignatureMethod";
-  private static final String signatureMethodValue = "HmacSHA256";
-  private static final String signatureVersion = "SignatureVersion";
-  private static final String signatureVersionValue = "2";
-  private static final String timestamp = "Timestamp";
-  private static final String signature = "Signature";
+	static final String op = "op";
+	static final String opValue = "auth";
+	private static final String accessKeyId = "AccessKeyId";
+	private static final String signatureMethod = "SignatureMethod";
+	private static final String signatureMethodValue = "HmacSHA256";
+	private static final String signatureVersion = "SignatureVersion";
+	private static final String signatureVersionValue = "2";
+	private static final String timestamp = "Timestamp";
+	private static final String signature = "Signature";
 
-  private static final DateTimeFormatter DT_FORMAT = DateTimeFormatter
-      .ofPattern("uuuu-MM-dd'T'HH:mm:ss");
-  private static final ZoneId ZONE_GMT = ZoneId.of("Z");
+	private static final DateTimeFormatter DT_FORMAT = DateTimeFormatter.ofPattern("uuuu-MM-dd'T'HH:mm:ss");
+	private static final ZoneId ZONE_GMT = ZoneId.of("Z");
 
+	void createSignature(String accessKey, String secretKey, String method, String host, String uri,
+			UrlParamsBuilder builder) {
+		StringBuilder sb = new StringBuilder(1024);
 
-  void createSignature(String accessKey, String secretKey, String method, String host,
-      String uri, UrlParamsBuilder builder) {
-    StringBuilder sb = new StringBuilder(1024);
+		if (accessKey == null || "".equals(accessKey) || secretKey == null || "".equals(secretKey)) {
+			throw new HuobiApiException(HuobiApiException.KEY_MISSING, "API key and secret key are required");
+		}
 
-    if (accessKey == null || "".equals(accessKey) || secretKey == null || "".equals(secretKey)) {
-      throw new HuobiApiException(HuobiApiException.KEY_MISSING,
-          "API key and secret key are required");
-    }
+		sb.append(method.toUpperCase()).append('\n').append(host.toLowerCase()).append('\n').append(uri).append('\n');
 
-    sb.append(method.toUpperCase()).append('\n')
-        .append(host.toLowerCase()).append('\n')
-        .append(uri).append('\n');
+		builder.putToUrl(accessKeyId, accessKey).putToUrl(signatureVersion, signatureVersionValue)
+				.putToUrl(signatureMethod, signatureMethodValue).putToUrl(timestamp, gmtNow());
 
-    builder.putToUrl(accessKeyId, accessKey)
-        .putToUrl(signatureVersion, signatureVersionValue)
-        .putToUrl(signatureMethod, signatureMethodValue)
-        .putToUrl(timestamp, gmtNow());
+		sb.append(builder.buildSignature());
+		Mac hmacSha256;
+		try {
+			hmacSha256 = Mac.getInstance(signatureMethodValue);
+			SecretKeySpec secKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), signatureMethodValue);
+			hmacSha256.init(secKey);
+		} catch (NoSuchAlgorithmException e) {
+			throw new HuobiApiException(HuobiApiException.RUNTIME_ERROR,
+					"[Signature] No such algorithm: " + e.getMessage());
+		} catch (InvalidKeyException e) {
+			throw new HuobiApiException(HuobiApiException.RUNTIME_ERROR, "[Signature] Invalid key: " + e.getMessage());
+		}
+		String payload = sb.toString();
+		byte[] hash = hmacSha256.doFinal(payload.getBytes(StandardCharsets.UTF_8));
 
-    sb.append(builder.buildSignature());
-    Mac hmacSha256;
-    try {
-      hmacSha256 = Mac.getInstance(signatureMethodValue);
-      SecretKeySpec secKey = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8),
-          signatureMethodValue);
-      hmacSha256.init(secKey);
-    } catch (NoSuchAlgorithmException e) {
-      throw new HuobiApiException(HuobiApiException.RUNTIME_ERROR,
-          "[Signature] No such algorithm: " + e.getMessage());
-    } catch (InvalidKeyException e) {
-      throw new HuobiApiException(HuobiApiException.RUNTIME_ERROR,
-          "[Signature] Invalid key: " + e.getMessage());
-    }
-    String payload = sb.toString();
-    byte[] hash = hmacSha256.doFinal(payload.getBytes(StandardCharsets.UTF_8));
+		String actualSign = Base64.getEncoder().encodeToString(hash);
 
-    String actualSign = Base64.getEncoder().encodeToString(hash);
+		builder.putToUrl(signature, actualSign);
 
-    builder.putToUrl(signature, actualSign);
+	}
 
-  }
+	private static long epochNow() {
+		return Instant.now().getEpochSecond();
+	}
 
-  private static long epochNow() {
-    return Instant.now().getEpochSecond();
-  }
-
-  static String gmtNow() {
-    return Instant.ofEpochSecond(epochNow()).atZone(ZONE_GMT).format(DT_FORMAT);
-  }
+	static String gmtNow() {
+		return Instant.ofEpochSecond(epochNow()).atZone(ZONE_GMT).format(DT_FORMAT);
+	}
 }

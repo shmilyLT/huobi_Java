@@ -8,5 +8,5 @@ import com.huobi.client.exception.HuobiApiException;
 @FunctionalInterface
 public interface SubscriptionErrorHandler {
 
-  void onError(HuobiApiException exception);
+	void onError(HuobiApiException exception);
 }

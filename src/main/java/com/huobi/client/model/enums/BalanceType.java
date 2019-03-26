@@ -3,26 +3,23 @@ package com.huobi.client.model.enums;
 import com.huobi.client.impl.utils.EnumLookup;
 
 public enum BalanceType {
-  TRADE("trade"),
-  FROZEN("frozen"),
-  LOAN("loan"),
-  INTEREST("interest");
+	TRADE("trade"), FROZEN("frozen"), LOAN("loan"), INTEREST("interest");
 
-  private final String code;
+	private final String code;
 
-  BalanceType(String code) {
-    this.code = code;
-  }
+	BalanceType(String code) {
+		this.code = code;
+	}
 
-  @Override
-  public String toString() {
-    return code;
-  }
+	@Override
+	public String toString() {
+		return code;
+	}
 
-  private static final EnumLookup<BalanceType> lookup = new EnumLookup<>(BalanceType.class);
+	private static final EnumLookup<BalanceType> lookup = new EnumLookup<>(BalanceType.class);
 
-  public static BalanceType lookup(String name) {
-    return lookup.lookup(name);
-  }
+	public static BalanceType lookup(String name) {
+		return lookup.lookup(name);
+	}
 
 }

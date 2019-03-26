@@ -7,32 +7,32 @@ import java.util.List;
  */
 public class ExchangeInfo {
 
-  private List<Symbol> symbolList;
-  private List<String> currencies;
+	private List<Symbol> symbolList;
+	private List<String> currencies;
 
-  /**
-   * Get the symbol list.
-   *
-   * @return The symbol list, see {@link Symbol}
-   */
-  public List<Symbol> getSymbolList() {
-    return symbolList;
-  }
-  
-  /**
-   * Get the currency list.
-   *
-   * @return The currency list.
-   */
-  public List<String> getCurrencies() {
-    return currencies;
-  }
+	/**
+	 * Get the symbol list.
+	 *
+	 * @return The symbol list, see {@link Symbol}
+	 */
+	public List<Symbol> getSymbolList() {
+		return symbolList;
+	}
 
-  public void setCurrencies(List<String> currencies) {
-    this.currencies = currencies;
-  }
+	/**
+	 * Get the currency list.
+	 *
+	 * @return The currency list.
+	 */
+	public List<String> getCurrencies() {
+		return currencies;
+	}
 
-  public void setSymbolList(List<Symbol> symbolList) {
-    this.symbolList = symbolList;
-  }
+	public void setCurrencies(List<String> currencies) {
+		this.currencies = currencies;
+	}
+
+	public void setSymbolList(List<Symbol> symbolList) {
+		this.symbolList = symbolList;
+	}
 }

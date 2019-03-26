@@ -12,17 +12,17 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({TimeService.class})
+@PrepareForTest({ TimeService.class })
 public class TestSubscriptionChannels {
 
-  static {
-    PowerMockito.mockStatic(TimeService.class);
-    PowerMockito.when(TimeService.getCurrentTimeStamp()).thenReturn(new Long(123));
-  }
+	static {
+		PowerMockito.mockStatic(TimeService.class);
+		PowerMockito.when(TimeService.getCurrentTimeStamp()).thenReturn(new Long(123));
+	}
 
-  @Test
-  public void testklineChannel() {
-    assertEquals("{\"sub\":\"market.btcusdt.kline.1min\",\"id\":\"123\"}",
-        Channels.klineChannel("btcusdt", CandlestickInterval.MIN1));
-  }
+	@Test
+	public void testklineChannel() {
+		assertEquals("{\"sub\":\"market.btcusdt.kline.1min\",\"id\":\"123\"}",
+				Channels.klineChannel("btcusdt", CandlestickInterval.MIN1));
+	}
 }

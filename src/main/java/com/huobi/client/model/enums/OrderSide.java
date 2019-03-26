@@ -5,19 +5,17 @@ package com.huobi.client.model.enums;
  */
 
 public enum OrderSide {
-  BUY("buy"),
-  SELL("sell");
+	BUY("buy"), SELL("sell");
 
-  private final String code;
+	private final String code;
 
-  OrderSide(String side) {
-    this.code = side;
-  }
+	OrderSide(String side) {
+		this.code = side;
+	}
 
-  @Override
-  public String toString() {
-    return code;
-  }
-
+	@Override
+	public String toString() {
+		return code;
+	}
 
 }
