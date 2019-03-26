@@ -7,7 +7,6 @@ import com.huobi.client.impl.utils.EtfResult;
 import com.huobi.client.impl.utils.FailedAsyncResult;
 import com.huobi.client.impl.utils.JsonWrapper;
 import com.huobi.client.impl.utils.SucceededAsyncResult;
-import com.huobi.client.model.enums.EtfStatus;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;

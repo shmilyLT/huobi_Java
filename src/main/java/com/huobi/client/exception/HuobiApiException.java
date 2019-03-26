@@ -2,8 +2,6 @@ package com.huobi.client.exception;
 
 /**
  * 自定义异常
- * 
- * @author taolin
  */
 public class HuobiApiException extends RuntimeException {
 	private static final long serialVersionUID = -4424260415064757173L;

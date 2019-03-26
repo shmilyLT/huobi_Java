@@ -1,6 +1,5 @@
 package com.huobi.client.model.request;
 
-import com.huobi.client.model.enums.AccountType;
 import com.huobi.client.model.enums.OrderType;
 import java.util.Date;
 

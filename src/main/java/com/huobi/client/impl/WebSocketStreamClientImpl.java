@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class WebSocketStreamClientImpl implements SubscriptionClient {
+	
 	private final SubscriptionOptions options;
+	
 	private WebSocketWatchDog watchDog;
 
 	private final WebsocketRequestImpl requestImpl;

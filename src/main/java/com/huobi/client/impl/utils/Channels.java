@@ -6,9 +6,6 @@ import com.huobi.client.model.enums.CandlestickInterval;
 
 /**
  * 渠道
- * 
- * @author taolin
- *
  */
 public abstract class Channels {
 	/**
