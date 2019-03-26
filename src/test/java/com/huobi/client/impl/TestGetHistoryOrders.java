@@ -194,7 +194,7 @@ public class TestGetHistoryOrders {
     assertEquals(new BigDecimal("1.000000000000000001"), orders.get(0).getPrice());
     assertEquals("htbtc", orders.get(0).getSymbol());
     assertEquals(new BigDecimal("1"), orders.get(0).getAmount());
-    assertEquals(OrderSource.API, orders.get(0).getSource());
+    assertEquals(OrderSource.SPOTAPI, orders.get(0).getSource());
     assertEquals(OrderState.CANCELED, orders.get(0).getState());
     assertEquals(OrderType.SELL_LIMIT, orders.get(0).getType());
     assertEquals(0, orders.get(1).getFinishedTimestamp());

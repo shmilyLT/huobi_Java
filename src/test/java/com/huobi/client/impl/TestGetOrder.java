@@ -111,7 +111,7 @@ public class TestGetOrder {
     assertEquals(new BigDecimal("1.00000123"), order.getPrice());
     assertEquals("htbtc", order.getSymbol());
     assertEquals(new BigDecimal("1"), order.getAmount());
-    assertEquals(OrderSource.API, order.getSource());
+    assertEquals(OrderSource.SPOTAPI, order.getSource());
     assertEquals(OrderState.CANCELED, order.getState());
     assertEquals(OrderType.SELL_LIMIT, order.getType());
 

@@ -107,7 +107,7 @@ public class TestSubscribeOrderUpdateEvent {
         event.getData().getCreatedTimestamp());
     assertEquals(2039498445L, event.getData().getOrderId());
     assertEquals(OrderType.BUY_LIMIT, event.getData().getType());
-    assertEquals(OrderSource.API, event.getData().getSource());
+    assertEquals(OrderSource.SPOTAPI, event.getData().getSource());
     assertEquals(new BigDecimal("8301.35728"), event.getData().getFilledCashAmount());
     assertEquals(new BigDecimal("8"), event.getData().getFilledFees());
   }

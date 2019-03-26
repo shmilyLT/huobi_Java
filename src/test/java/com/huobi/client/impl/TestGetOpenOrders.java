@@ -174,7 +174,7 @@ public class TestGetOpenOrders {
     List<Order> orderList = restApiRequest.jsonParser.parseJson(JsonWrapper.parseFromString(data));
     assertEquals(2, orderList.size());
     assertEquals("htbtc", orderList.get(0).getSymbol());
-    assertEquals(OrderSource.API, orderList.get(0).getSource());
+    assertEquals(OrderSource.SPOTAPI, orderList.get(0).getSource());
     assertEquals(new BigDecimal("1"), orderList.get(0).getAmount());
     assertEquals(new BigDecimal("1.1"), orderList.get(0).getPrice());
     assertEquals(new BigDecimal("0.1"), orderList.get(0).getFilledAmount());
@@ -188,7 +188,7 @@ public class TestGetOpenOrders {
         orderList.get(0).getCreatedTimestamp());
 
     assertEquals("htbtc", orderList.get(1).getSymbol());
-    assertEquals(OrderSource.API, orderList.get(1).getSource());
+    assertEquals(OrderSource.SPOTAPI, orderList.get(1).getSource());
     assertEquals(new BigDecimal("2"), orderList.get(1).getAmount());
     assertEquals(new BigDecimal("2.1"), orderList.get(1).getPrice());
     assertEquals(new BigDecimal("2"), orderList.get(1).getFilledAmount());
